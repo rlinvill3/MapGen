@@ -6,8 +6,17 @@ public class Tile{
 
 
     String filepath;
+    String type;
 
     Tile(String filepath){
+        this.filepath=filepath;
+        this.type=null;
+
+        
+    }
+    Tile(String filepath, String type){
+        this.filepath=filepath;
+        this.type=type;
 
         
     }
