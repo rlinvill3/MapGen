@@ -1,25 +1,35 @@
 /**
  * 2d Map made up of tile classes
  */
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 public class DrawnMap {
     
 
     Tile[][] map;
     int length;
-    Tile types[];
+    String types[];
+    Map<String,Integer> typeVals;
 
-    DrawnMap(int length,Tile types[]){
+    DrawnMap(int length,String types[]){
 
         this.length=length;
         this.types=types;
         map=new Tile[length][length];
+        typeVals=new HashMap<>();
+
+        for(int k=0;k<types.length;k++){
+            typeVals.put(types[k], 5);
+        }
+
+
+
+
+        
 
     }
 
-    void populateMap(){
-
-    }
     Tile getRandomTile(){
         Random rand=new Random();
         return map[rand.nextInt(length)][rand.nextInt(length)];
