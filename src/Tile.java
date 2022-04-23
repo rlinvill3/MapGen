@@ -7,18 +7,45 @@ public class Tile{
 
     String filepath;
     String type;
+    int locx;
+    int locy;
 
-    Tile(String filepath){
+    int getx(){
+        return this.locx;
+    }
+    int gety(){
+        return this.locy;
+    }
+    String getType(){
+        return this.type;
+    }
+    void setx(int x){
+        this.locx=x;
+    }
+    void sety(int y){
+        this.locy=y;
+    }
+    void setType(String type){
+        this.type=type;
+    }
+
+    Tile(int x, int y){
+        this.type=null;
+        this.locx=x;
+        this.locy=y;
+    }
+
+    Tile(String filepath, int x, int y){
         this.filepath=filepath;
         this.type=null;
-
-        
+        this.locx=x;
+        this.locy=y; 
     }
-    Tile(String filepath, String type){
+    Tile(String filepath, String type,int x, int y){
         this.filepath=filepath;
         this.type=type;
-
-        
+        this.locx=x;
+        this.locy=y;
     }
 
 }
