@@ -18,10 +18,6 @@ public class MapDisplay {
     
 
     public static void main(String args[]){
-        DrawnMap map=new DrawnMap(50);
-
-
-
 
         
     }
