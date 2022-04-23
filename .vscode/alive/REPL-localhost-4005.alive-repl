@@ -1,0 +1,55 @@
+
+CL-USER> 
+;; Loading c:\Users\rlcal\OneDrive\Documents\Visual studio\AI class\assignment1 code.lsp
+
+
+; file: c:/Users/rlcal/OneDrive/Documents/Visual studio/AI class/assignment1 code.lsp
+; in: DEFUN K-NEAREST-NEIGHBOR
+;     (LET ((KLIST (MAKE-LIST 5)))
+;       (DOTIMES (X K)
+;         (LET ((MINITEM #))
+;           (SETF # MINITEM))))
+; 
+; caught STYLE-WARNING:
+;   The variable KLIST is defined but never used.
+
+;     (MIN DIFLIST)
+; 
+; caught WARNING:
+;   Derived type of #:ARG03 is
+;     (VALUES LIST &OPTIONAL),
+;   conflicting with its asserted type
+;     REAL.
+;   See also:
+;     The SBCL Manual, Node "Handling of Types"
+; 
+; compilation unit finished
+;   caught 1 WARNING condition
+;   caught 1 STYLE-WARNING condition
+
+;; Loading c:\Users\rlcal\OneDrive\Documents\Visual studio\AI class\assignment1 code.lsp
+
+
+; file: c:/Users/rlcal/OneDrive/Documents/Visual studio/AI class/assignment1 code.lsp
+; in: DEFUN K-NEAREST-NEIGHBOR
+;     (LET ((KLIST (MAKE-LIST 5)))
+;       (DOTIMES (X K)
+;         (LET ((MINITEM #))
+;           (SETF # MINITEM))))
+; 
+; caught STYLE-WARNING:
+;   The variable KLIST is defined but never used.
+
+;     (MIN DIFLIST)
+; 
+; caught WARNING:
+;   Derived type of #:ARG03 is
+;     (VALUES LIST &OPTIONAL),
+;   conflicting with its asserted type
+;     REAL.
+;   See also:
+;     The SBCL Manual, Node "Handling of Types"
+; 
+; compilation unit finished
+;   caught 1 WARNING condition
+;   caught 1 STYLE-WARNING condition
