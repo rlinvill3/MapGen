@@ -19,6 +19,15 @@ public class DrawnMap {
         map=new Tile[length][length];
         typeVals=new HashMap<>();
 
+
+        //Initialize Tiles to locations only
+        for(int k=0;k<length;k++){
+            for(int l=0;l<length;l++){
+                map[k][l]=new Tile(k, l);
+            }
+        }
+
+        //setting each type to 5 positions
         for(int k=0;k<types.length;k++){
             typeVals.put(types[k], 5);
         }
@@ -95,7 +104,9 @@ public class DrawnMap {
     }
 
     public static void main(String[] args) {
-        
+        String test[]={"ligma","sugma"};
+        DrawnMap map=new DrawnMap(5, test);
+        System.out.println(map.map[0][0].type);
 
     }
 
