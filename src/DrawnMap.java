@@ -8,16 +8,29 @@ public class DrawnMap {
     
 
     Tile[][] map;
+    /**
+     * squared length of map
+     */
     int length;
+    /**
+     * The types of Tiles that will be present in an array, no duplicates
+     */
     String types[];
-    Map<String,Integer> typeVals;
+    /**
+     * A mapping of counts of how many tiles will be "guaranteed" to generate for each string
+     */
+    Map<String,Integer> typeGuaranteedMap;
+    /**
+     * A mapping to each tile type's base probability of replicating
+     */
+    Map<String,Integer> typeDensityMap;
 
     DrawnMap(int length,String types[]){
 
         this.length=length;
         this.types=types;
         map=new Tile[length][length];
-        typeVals=new HashMap<>();
+        typeGuaranteedMap=new HashMap<>();
 
 
         //Initialize Tiles to locations only
@@ -29,13 +42,23 @@ public class DrawnMap {
 
         //setting each type to 5 positions
         for(int k=0;k<types.length;k++){
-            typeVals.put(types[k], 5);
+            typeGuaranteedMap.put(types[k], 5);
         }
 
+    }
 
+    void populateTypes(){
 
+        for(int k=0;k<types.length;k++){
+            Tile randTile=getRandomTile();
+            while(randTile.type!=null){
+                randTile=getRandomTile();
+            }
 
-        
+            MapPopulator poper=new MapPopulator(types[k], randTile.getx(), randTile.gety(), typeDensityMap.get(types[k]), this);
+            
+        }
+
 
     }
 
