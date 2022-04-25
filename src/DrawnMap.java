@@ -33,7 +33,7 @@ public class DrawnMap {
         typeGuaranteedMap=new HashMap<>();
 
 
-        //Initialize Tiles to locations only
+        //Initialize Tiles with only location data
         for(int k=0;k<length;k++){
             for(int l=0;l<length;l++){
                 map[k][l]=new Tile(k, l);
@@ -44,9 +44,16 @@ public class DrawnMap {
         for(int k=0;k<types.length;k++){
             typeGuaranteedMap.put(types[k], 5);
         }
+        //setting default replication probability to 35%
+        for(int k=0;k<types.length;k++){
+            typeDensityMap.put(types[k], 35);
+        }
 
     }
 
+    /**
+     * for each type in the array checks for a random tile with no type data and populates 
+     */
     void populateTypes(){
 
         for(int k=0;k<types.length;k++){
@@ -56,18 +63,28 @@ public class DrawnMap {
             }
 
             MapPopulator poper=new MapPopulator(types[k], randTile.getx(), randTile.gety(), typeDensityMap.get(types[k]), this);
+            poper.populate();
             
         }
 
 
     }
 
+
+
+
+
+
+
+    /*
+     * GETTERS AND SETTERS BELOW
+     * 
+     */
+
     Tile getRandomTile(){
         Random rand=new Random();
         return map[rand.nextInt(length)][rand.nextInt(length)];
     }
-
-
     Tile getLeft(int x,int y){
         if(checkLeft(x)){
             return map[x-1][y];
@@ -127,9 +144,7 @@ public class DrawnMap {
     }
 
     public static void main(String[] args) {
-        String test[]={"ligma","sugma"};
-        DrawnMap map=new DrawnMap(5, test);
-        System.out.println(map.map[0][0].type);
+        
 
     }
 

@@ -30,14 +30,12 @@ public class Tile{
     }
 
     Tile(int x, int y){
-        this.type=null;
         this.locx=x;
         this.locy=y;
     }
 
-    Tile(String filepath, int x, int y){
-        this.filepath=filepath;
-        this.type=null;
+    Tile(String type, int x, int y){
+        this.type=type;
         this.locx=x;
         this.locy=y; 
     }
