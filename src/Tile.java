@@ -39,11 +39,11 @@ public class Tile{
         this.locx=x;
         this.locy=y; 
     }
-    Tile(String filepath, String type,int x, int y){
-        this.filepath=filepath;
-        this.type=type;
-        this.locx=x;
-        this.locy=y;
-    }
+    // Tile(String filepath, String type,int x, int y){
+    //     this.filepath=filepath;
+    //     this.type=type;
+    //     this.locx=x;
+    //     this.locy=y;
+    // }
 
 }

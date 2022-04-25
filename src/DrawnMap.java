@@ -30,13 +30,14 @@ public class DrawnMap {
         this.length=length;
         this.types=types;
         map=new Tile[length][length];
+        typeDensityMap=new HashMap<>();
         typeGuaranteedMap=new HashMap<>();
 
 
         //Initialize Tiles with only location data
         for(int k=0;k<length;k++){
             for(int l=0;l<length;l++){
-                map[k][l]=new Tile(k, l);
+                map[k][l]=new Tile("", k, l);
             }
         }
 
@@ -57,13 +58,22 @@ public class DrawnMap {
     void populateTypes(){
 
         for(int k=0;k<types.length;k++){
+
+            System.out.println("populating type "+types[k]);
+
             Tile randTile=getRandomTile();
-            while(randTile.type!=null){
+            while(!randTile.type.equals("")){
+                System.out.println("aquiring random tile to start");
                 randTile=getRandomTile();
             }
 
-            MapPopulator poper=new MapPopulator(types[k], randTile.getx(), randTile.gety(), typeDensityMap.get(types[k]), this);
-            poper.populate();
+            System.out.println("Random seeding tile aquired X: "+randTile.getx()+" Y:"+randTile.gety());
+
+            int baseProbability=typeDensityMap.get(types[k]);
+            int guaranteedNum=typeGuaranteedMap.get(types[k]);
+
+
+            MapPopulator poper=new MapPopulator(types[k], randTile.getx(), randTile.gety(), baseProbability, guaranteedNum,  this);
             
         }
 
@@ -122,7 +132,7 @@ public class DrawnMap {
     }
     boolean checkRight(int x){
         
-        if(x+1<=length-1){
+        if(x+1<=length){
             return true;
         }
         return false;
@@ -136,7 +146,7 @@ public class DrawnMap {
 
     }
     boolean checkDown(int y){
-        if(y+1<=length-1){
+        if(y+1<=length){
             return true;
         }
         return false;
@@ -144,6 +154,27 @@ public class DrawnMap {
     }
 
     public static void main(String[] args) {
+        String types[]={"mountain","plains"};
+        DrawnMap test=new DrawnMap(50, types);
+        System.out.println("generating..");
+        test.populateTypes();
+        System.out.println("population complete");
+
+        for(int k=0;k<50;k++){
+            for(int m=0;m<50;m++){
+                System.out.println(test.map[k][m].type);
+                if(test.map[k][m].type.equals("mountain")){
+                    System.out.print("M");
+                }
+                else if(test.map[k][m].type.equals("plains")){
+                    System.out.print("P");
+                }
+                else if(test.map[k][m].type==null){
+                    System.out.print("_");
+                }
+            }
+            System.out.print('\n');
+        }
         
 
     }
