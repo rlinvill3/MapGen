@@ -36,6 +36,7 @@ public class DrawnMap {
         typeGuaranteedMap=new HashMap<>();
         this.seed=seed;
         this.rand=new Random();
+        rand.setSeed(seed);
 
 
         //Initialize Tiles with only location data
@@ -45,9 +46,9 @@ public class DrawnMap {
             }
         }
 
-        //setting each type to 5 positions
+        //setting each type to X positions
         for(int k=0;k<types.length;k++){
-            typeGuaranteedMap.put(types[k], 5);
+            typeGuaranteedMap.put(types[k], 150);
         }
         //setting default replication probability to 35%
         for(int k=0;k<types.length;k++){
@@ -136,6 +137,37 @@ public class DrawnMap {
         return null;
 
     }
+
+    Tile getUpLeft(int x,int y){
+        if(checkUpLeft(x,y)){
+            return map[x-1][y-1];
+        }
+        return null;
+
+    }
+    Tile getUpRight(int x,int y){
+        if(checkUpRight(x,y)){
+            return map[x+1][y-1];
+        }
+        return null;
+
+    }
+    Tile getDownLeft(int x,int y){
+        if(checkDownLeft(x,y)){
+            return map[x-1][y+1];
+        }
+        return null;
+
+    }
+    Tile getDownRight(int x,int y){
+        if(checkDownRight(x,y)){
+            return map[x+1][y+1];
+        }
+        return null;
+
+    }
+
+
     boolean checkLeft(int x){
         if(x-1>=0){
             return true;
@@ -166,29 +198,55 @@ public class DrawnMap {
 
     }
 
+    /*
+    *Anti cardinal getters and setters
+     */
+    boolean checkUpLeft(int x,int y){
+        if(x-1>=0&&y-1>=0){
+            return true;
+        }
+        return false;
+
+    }
+    boolean checkUpRight(int x,int y){
+        
+        if(x+1<=length&&y-1>=0){
+            return true;
+        }
+        return false;
+
+    }
+    boolean checkDownLeft(int x,int y){
+        if(x-1>=0&&y+1<=length){
+            return true;
+        }
+        return false;
+
+    }
+    boolean checkDownRight(int x,int y){
+        if(y+1<=length&&x+1<=length){
+            return true;
+        }
+        return false;
+
+    }
+
     public static void main(String[] args) {
-        String types[]={"mountain","plains"};
+        String types[]={"m","p"};
         int seed=1;
         DrawnMap test=new DrawnMap(50, types,seed);
+
         System.out.println("generating..");
         test.populateTypes();
-        System.out.println("population complete");
-
-
-        System.out.println("map output:");
+        System.out.println("population complete, map output: ");
 
         for(int k=0;k<50;k++){
             for(int m=0;m<50;m++){
-                //System.out.println(test.map[k][m].type);
-                if(test.map[k][m].type.equals("mountain")){
-                    System.out.print("M");
+                if(test.map[m][k].type.equals("")){
+                    System.out.print(" ");
                 }
-                else if(test.map[k][m].type.equals("plains")){
-                    System.out.print("P");
-                }
-                else if(test.map[k][m].type==null){
-                    System.out.print("_");
-                }
+                System.out.print(test.map[k][m].type);
+
             }
             System.out.print('\n');
         }

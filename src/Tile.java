@@ -31,6 +31,7 @@ public class Tile{
     Tile(int x, int y){
         this.locx=x;
         this.locy=y;
+        this.type="";
     }
 
     Tile(String type, int x, int y){
