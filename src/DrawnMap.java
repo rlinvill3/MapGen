@@ -24,14 +24,18 @@ public class DrawnMap {
      * A mapping to each tile type's base probability of replicating
      */
     Map<String,Integer> typeDensityMap;
+    int seed;
+    Random rand;
 
-    DrawnMap(int length,String types[]){
+    DrawnMap(int length,String types[],int seed){
 
         this.length=length;
         this.types=types;
         map=new Tile[length][length];
         typeDensityMap=new HashMap<>();
         typeGuaranteedMap=new HashMap<>();
+        this.seed=seed;
+        this.rand=new Random();
 
 
         //Initialize Tiles with only location data
@@ -81,8 +85,18 @@ public class DrawnMap {
     }
 
 
-
-
+/**
+     * "rolls a d100" for probability
+     * if <= set probability variable then "passes"
+     * @return if rolled probability successfully
+     */
+    boolean randFromProb(int probability){
+        int roll=1+rand.nextInt(99);
+        if(roll<=probability){
+            return true;
+        }
+        return false;
+    }
 
 
 
@@ -92,7 +106,6 @@ public class DrawnMap {
      */
 
     Tile getRandomTile(){
-        Random rand=new Random();
         return map[rand.nextInt(length)][rand.nextInt(length)];
     }
     Tile getLeft(int x,int y){
@@ -155,14 +168,18 @@ public class DrawnMap {
 
     public static void main(String[] args) {
         String types[]={"mountain","plains"};
-        DrawnMap test=new DrawnMap(50, types);
+        int seed=1;
+        DrawnMap test=new DrawnMap(50, types,seed);
         System.out.println("generating..");
         test.populateTypes();
         System.out.println("population complete");
 
+
+        System.out.println("map output:");
+
         for(int k=0;k<50;k++){
             for(int m=0;m<50;m++){
-                System.out.println(test.map[k][m].type);
+                //System.out.println(test.map[k][m].type);
                 if(test.map[k][m].type.equals("mountain")){
                     System.out.print("M");
                 }
