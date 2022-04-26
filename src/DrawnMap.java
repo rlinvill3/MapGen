@@ -177,7 +177,7 @@ public class DrawnMap {
     }
     boolean checkRight(int x){
         
-        if(x+1<=length){
+        if(x+1<length){
             return true;
         }
         return false;
@@ -191,7 +191,7 @@ public class DrawnMap {
 
     }
     boolean checkDown(int y){
-        if(y+1<=length){
+        if(y+1<length){
             return true;
         }
         return false;
@@ -210,21 +210,21 @@ public class DrawnMap {
     }
     boolean checkUpRight(int x,int y){
         
-        if(x+1<=length&&y-1>=0){
+        if(x+1<length&&y-1>=0){
             return true;
         }
         return false;
 
     }
     boolean checkDownLeft(int x,int y){
-        if(x-1>=0&&y+1<=length){
+        if(x-1>=0&&y+1<length){
             return true;
         }
         return false;
 
     }
     boolean checkDownRight(int x,int y){
-        if(y+1<=length&&x+1<=length){
+        if(y+1<length&&x+1<length){
             return true;
         }
         return false;
@@ -233,7 +233,7 @@ public class DrawnMap {
 
     public static void main(String[] args) {
         String types[]={"m","p"};
-        int seed=1;
+        int seed=2;
         DrawnMap test=new DrawnMap(50, types,seed);
 
         System.out.println("generating..");
