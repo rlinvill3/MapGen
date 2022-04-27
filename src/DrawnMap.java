@@ -230,26 +230,34 @@ public class DrawnMap {
         return false;
 
     }
+    void printMap(){
+        for(int k=0;k<50;k++){
+            for(int m=0;m<50;m++){
+                if(this.map[m][k].type.equals("")){
+                    System.out.print(" ");
+                }
+                System.out.print(this.map[k][m].type);
 
+            }
+            System.out.print('\n');
+        }
+    }
+
+    /**
+     * KEEP LENGTH AT 50 FOR SOME REASON???????
+     * @param args
+     */
     public static void main(String[] args) {
-        String types[]={"m","p"};
-        int seed=2;
+        String types[]={"m","p","x","o"};
+        int seed=9;
         DrawnMap test=new DrawnMap(50, types,seed);
 
         System.out.println("generating..");
         test.populateTypes();
         System.out.println("population complete, map output: ");
 
-        for(int k=0;k<50;k++){
-            for(int m=0;m<50;m++){
-                if(test.map[m][k].type.equals("")){
-                    System.out.print(" ");
-                }
-                System.out.print(test.map[k][m].type);
-
-            }
-            System.out.print('\n');
-        }
+        test.printMap();
+        
         
 
     }

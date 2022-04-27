@@ -18,7 +18,7 @@ public class MapDisplay extends JFrame{
 
 
 
-	public MapDisplay(String title) {
+	public MapDisplay(String title,DrawnMap map) {
 
 		super.setTitle(title);
 		super.setSize(1920, 1080);
@@ -26,7 +26,7 @@ public class MapDisplay extends JFrame{
 		super.setVisible(true);
 		
 		// setting grid layout with rows, cols, hgap, and vgap
-		super.setLayout(new GridLayout(10, 10, 1, 0));
+		super.setLayout(new GridLayout(map.length, map.length, 0, 0));
 
 		init();
 	}
@@ -42,7 +42,7 @@ public class MapDisplay extends JFrame{
 
 			// setting icon
 			label.setIcon(new ImageIcon(
-					new ImageIcon("images/" + name).getImage().getScaledInstance(50, 25, Image.SCALE_DEFAULT)));
+					new ImageIcon("images/" + name).getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT)));
 
 			add(label);
 
@@ -53,7 +53,10 @@ public class MapDisplay extends JFrame{
 
     public static void main(String args[]){
 
-        new MapDisplay("Generated Map");
+        String[] ligma={"m","p"};
+        DrawnMap map=new DrawnMap(50, ligma, 1);
+        new MapDisplay("Generated Map",map);
+
     }
 
 
