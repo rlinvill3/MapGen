@@ -14,12 +14,46 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class MapDisplay {
+public class MapDisplay extends JFrame{
+
+
+
+	public MapDisplay(String title) {
+
+		super.setTitle(title);
+		super.setSize(1920, 1080);
+		super.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		super.setVisible(true);
+		
+		// setting grid layout with rows, cols, hgap, and vgap
+		super.setLayout(new GridLayout(10, 10, 1, 0));
+
+		init();
+	}
+
+    private void init() {
+
+		File file = new File("images");
+
+		// getting files name from folder
+		for (String name : file.list()) {
+
+			JLabel label = new JLabel();
+
+			// setting icon
+			label.setIcon(new ImageIcon(
+					new ImageIcon("images/" + name).getImage().getScaledInstance(50, 25, Image.SCALE_DEFAULT)));
+
+			add(label);
+
+		}
+
+	}
     
 
     public static void main(String args[]){
 
-        
+        new MapDisplay("Generated Map");
     }
 
 
