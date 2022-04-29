@@ -22,6 +22,9 @@ public class guiDriver extends JPanel {
         //construct components
         genButton = new JButton ("Generate Map");
         mapLabel = new JLabel ("Random Map Generator");
+        /**
+         * text fields
+         */
         jcomp4 = new JTextField (5);
         jcomp5 = new JTextField (5);
         jcomp6 = new JTextField (5);
@@ -65,13 +68,13 @@ public class guiDriver extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 strArray=new ArrayList<>();
                 if(!jcomp4.getText().equals("")){strArray.add(jcomp4.getText());}
-                if(!jcomp4.getText().equals("")){strArray.add(jcomp5.getText());}
-                if(!jcomp4.getText().equals("")){strArray.add(jcomp6.getText());}
-                if(!jcomp4.getText().equals("")){strArray.add(jcomp7.getText());}
-                if(!jcomp4.getText().equals("")){strArray.add(jcomp8.getText());}
-                if(!jcomp4.getText().equals("")){strArray.add(jcomp9.getText());}
-                if(!jcomp4.getText().equals("")){strArray.add(jcomp10.getText());}
-                if(!jcomp4.getText().equals("")){strArray.add(jcomp11.getText());}
+                if(!jcomp5.getText().equals("")){strArray.add(jcomp5.getText());}
+                if(!jcomp6.getText().equals("")){strArray.add(jcomp6.getText());}
+                if(!jcomp7.getText().equals("")){strArray.add(jcomp7.getText());}
+                if(!jcomp8.getText().equals("")){strArray.add(jcomp8.getText());}
+                if(!jcomp9.getText().equals("")){strArray.add(jcomp9.getText());}
+                if(!jcomp10.getText().equals("")){strArray.add(jcomp10.getText());}
+                if(!jcomp11.getText().equals("")){strArray.add(jcomp11.getText());}
 
                 System.out.println(strArray.toString());
                 
