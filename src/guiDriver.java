@@ -3,7 +3,6 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.event.*;
 
 public class guiDriver extends JPanel {
     private JButton genButton;

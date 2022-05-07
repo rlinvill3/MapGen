@@ -1,26 +1,47 @@
 import java.util.ArrayList;
-
+/**
+ * Replication agent class, replicates and finds neighbors to replicate to
+ * @author Ryan Linville
+ */
 public class MapPopulator {
     
 
+    /**
+     * type of tile this is
+     */
     String type;
+    /**
+     * the number of this tile that should be guaranteed to generate
+     */
     int typeNum;
+    /**
+     * x pos
+     */
     int x;
+    /**
+     * y pos
+     */
     int y;
+    /**
+     * ref to the map itself
+     */
     DrawnMap map;
+    /**
+     * probability of replication
+     */
     int probability;
 
 
 
 
     /**
-     * 
-     * @param type
-     * @param x
-     * @param y
-     * @param probability
-     * @param typeNum
-     * @param map
+     * constructs and populates the tile it is created on
+     * @param type type of tile this is
+     * @param x x pos
+     * @param y  y pos
+     * @param probability probability of replication as an integer percentage
+     * @param typeNum the number of this tile that should be guaranteed to generate
+     * @param map ref to the map itself
      */
     MapPopulator(String type,int x,int y,int probability,int typeNum,DrawnMap map){
 
@@ -36,6 +57,7 @@ public class MapPopulator {
         if(checkGuaranteedRemaining()){
             spread();
         }
+        //if no guaranteed spawns remain relies on random chance to replicate
         else{
             if(map.randFromProb(probability)){
                 spread();
@@ -44,6 +66,10 @@ public class MapPopulator {
 
     }
 
+    /**
+     * obtains tile in a random 8 way direction
+     * @return Tile 
+     */
     Tile randomTileDirection(){
         ArrayList<Tile> availableNeighbors=eightSpreadLocList();
         if(availableNeighbors.size()==0){
@@ -58,7 +84,8 @@ public class MapPopulator {
 
     /**
      * Call god, see if he answers.
-     * @return 
+     * Very ugly code to check the surrounding eight tiles to see if they are valid
+     * @return a collection of the VALID tiles
      */
     ArrayList<Tile> eightSpreadLocList(){
         ArrayList<Tile> returner=new ArrayList<>();
@@ -85,6 +112,9 @@ public class MapPopulator {
 
     
 
+    /**
+     * generates on the current position
+     */
     void generateCurrentTile(){
 
         map.map[x][y]=new Tile(type, x, y);
@@ -94,21 +124,35 @@ public class MapPopulator {
 
         
     }
+    /**
+     * checks if there are guaranteed replications remaining
+     * @return boolean if true
+     */
     boolean checkGuaranteedRemaining(){
         if(map.typeGuaranteedMap.get(type)>0){
             return true;
         }
         return false;
     }
+    /**
+     * subtracts of guaranteed map
+     */
     void subtractGuaranteedRemaining(){
         map.typeGuaranteedMap.put(type, typeNum-1);
     }
 
 
+    /**
+     * returns guaranteed info
+     * @return
+     */
     int getCurTypeNum(){
         return map.typeGuaranteedMap.get(type);
     }
 
+    /**
+     * main replication code
+     */
     void spread(){
         Tile spreadTile=randomTileDirection();
         if(spreadTile==null){
@@ -119,7 +163,6 @@ public class MapPopulator {
         subtractGuaranteedRemaining();
 
     }
-
 
     Tile getCurrentLoc(){
         return map.map[this.x][this.y];

@@ -1,5 +1,7 @@
 /**
  * Singular tile for the 2d map
+ * Just contains simple data types
+ * @author Ryan Linville
  */
 public class Tile{
 

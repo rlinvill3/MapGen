@@ -1,5 +1,6 @@
 /**
  * 2d Map made up of tile classes
+ * @author Ryan Linville
  */
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +25,14 @@ public class DrawnMap {
      * A mapping to each tile type's base probability of replicating
      */
     Map<String,Integer> typeDensityMap;
+    /**
+     * seed of the map
+     * 
+     */
     int seed;
+    /**
+     * prob agent
+     */
     Random rand;
 
     DrawnMap(int length,String types[],int seed){
